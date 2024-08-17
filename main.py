@@ -9,19 +9,12 @@ def main():
         "Quais comparações podem ser feitas com o modelo empírico?",
         "Quais os possíveis trabalhos futuros?"
     ]
-    answers = []
 
-    for question in questions:
-        scispace = ScispaceDriver()
-        scispace.file_upload()
-        scispace.change_language()
+    root_path = "C:/Users/karol/Desktop/mestrado andrigo/TCC-3-karoline_souza_guckert_compressed.pdf"
 
-        text_answer = scispace.write_and_submit_in_text_area(question)
-        answers.append(text_answer)
-        print(text_answer)
-        scispace.close_window()
+    scispace = ScispaceDriver()
+    scispace.make_questions(questions, root_path)
 
-    print(answers)
 
 
 
