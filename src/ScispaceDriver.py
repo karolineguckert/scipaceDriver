@@ -14,6 +14,8 @@ class ScispaceDriver:
         answers = []
 
         for question in questions:
+            print("Perguntando a questão.... {}".format(question))
+
             self.create_new_connection_to_typeset()
             self.file_upload(root_path)
             self.change_language()
@@ -30,7 +32,7 @@ class ScispaceDriver:
         time.sleep(1)
 
         file_input.send_keys(root_path)
-        time.sleep(15)
+        time.sleep(20)
 
     def write_and_submit_in_text_area(self, text):
         text_area = self.driver.find_element(By.CSS_SELECTOR, "textarea")
