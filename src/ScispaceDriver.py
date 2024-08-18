@@ -29,10 +29,10 @@ class ScispaceDriver:
 
     def file_upload(self, root_path):
         file_input = self.driver.find_element(By.XPATH, "//input[@type='file']")
-        time.sleep(1)
+        time.sleep(5)
 
         file_input.send_keys(root_path)
-        time.sleep(20)
+        time.sleep(25)
 
     def write_and_submit_in_text_area(self, text):
         text_area = self.driver.find_element(By.CSS_SELECTOR, "textarea")

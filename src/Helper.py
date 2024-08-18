@@ -1,17 +1,17 @@
 from src.ScispaceDriver import ScispaceDriver
 from src.BibtextHelper import BibtextHelper
 from src.CsvHelper import CsvHelper
-
+import time
 
 class Helper():
 
     def __init__(self):
         self.questions = [
-            "Quais modelos de RNA foram utilizados? E de que forma foram utilizados?",
-            "Quais os pré-processamentos foram utilizados? E de que forma foram utilizados?",
-            "Quais os resultados obtidos?",
-            "Quais comparações podem ser feitas com o modelo empírico?",
-            "Quais os possíveis trabalhos futuros?"
+            "Quais modelos de aprendizado de máquina foram utilizados neste trabalho? E de que forma foram utilizados?",
+            "Quais os pré-processamentos foram utilizados nos modelos de aprendizado de máquina apresentados neste trabalho? E de que forma foram utilizados?",
+            "Quais os resultados obtidos pelos modelos de aprendizado de máquina utilizados neste trabalho?",
+            "Quais comparações foram feitas pelo autor entre os modelos de aprendizado de máquina utilizados neste trabalho e o modelo empírico (físico-matemático)?",
+            "Quais os possíveis trabalhos futuros são apresentados pelo autor neste trabalho?"
         ]
 
         self.absolute_path = "C:/Users/karol/Desktop/YOLO/seleniumMestrado/src/in/"
@@ -23,8 +23,13 @@ class Helper():
         bibtex_helper = BibtextHelper()
         articles_infos = bibtex_helper.get_infos_from_file()
 
-        for i in range(2, len(articles_infos)):
+        file_path = "src/out/artigos2.csv"
+        csv_helper.create_file_with_header(file_path)
+
+        for i in range(0, len(articles_infos)):
+            start_time = time.perf_counter()
             print("Iniciando artigo {}\n".format(i))
+
             answers = None
             file = articles_infos[i]["file"]
             title = articles_infos[i]["title"]
@@ -43,7 +48,8 @@ class Helper():
                     fields.append(answer)
             print("Incluindo no csv....")
 
-
-            file_path = "src/out/artigos.csv"
             csv_helper.append_fields_to_file(file_path, fields)
-            print("Finalizado\n")
+
+            end_time = time.perf_counter()
+            run_time = end_time - start_time
+            print("Finalizado - {}\n".format(run_time))
