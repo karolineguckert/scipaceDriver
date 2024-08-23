@@ -26,13 +26,13 @@ class Helper():
         file_path = "src/out/artigos2.csv"
         csv_helper.create_file_with_header(file_path)
 
-        for i in range(0, len(articles_infos)):
+        for i in range(35, len(articles_infos)):
             start_time = time.perf_counter()
             print("Iniciando artigo {}\n".format(i))
 
             answers = None
             file = articles_infos[i]["file"]
-            title = articles_infos[i]["title"]
+            title = articles_infos[i]["title"].replace("{", "").replace("}", "")
             doi = articles_infos[i]["doi"]
 
             print("Incluindo o artigo.... {}".format(title))
