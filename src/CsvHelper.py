@@ -1,16 +1,8 @@
 import csv
 
 class CsvHelper:
-    def __init__(self):
-        self.header = [
-            "Titulo",
-            "DOI",
-            "Modelo",
-            "Pré-processamento",
-            "Resultados",
-            "Resultados comparados com modelo empirico",
-            "Trabalhos futuros"
-        ]
+    def __init__(self, header_of_csv):
+        self.header = header_of_csv
 
     def create_file_with_header(self, file_path):
         with open(file_path, 'a+', newline='', encoding='utf-8') as csvfile:
